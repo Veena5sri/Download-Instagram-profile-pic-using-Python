@@ -1,0 +1,16 @@
+!pip install instaloader
+import instaloader
+
+# Create an instance of Instaloader
+L = instaloader.Instaloader()
+
+# Get the Instagram username from the user
+username = input("Enter the Instagram username: ")
+
+# Download the profile picture
+try:
+    profile = instaloader.Profile.from_username(L.context, username)
+    L.download_profile(profile, profile_pic_only=True)
+    print(f"Profile picture for {username} downloaded successfully!")
+except Exception as e:
+    print(f"Error downloading profile picture: {e}")
